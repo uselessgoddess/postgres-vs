@@ -27,7 +27,7 @@ jobs:
         export PGDATA=_data
         initdb _data
         sudo -i -u postgres
-        sudo pg_ctl -D _data -l logfile start
+         pg_ctl -D _data -l logfile start
         psql
     - name: Build & Run
       run: cargo run
