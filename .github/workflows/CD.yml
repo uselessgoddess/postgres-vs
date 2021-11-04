@@ -19,5 +19,8 @@ jobs:
       with:
         postgresql version: '11'
     - uses: actions/checkout@v2
+    - name: Start Postgres
+      run: |
+        psql
     - name: Build & Run
       run: cargo run --verbose
