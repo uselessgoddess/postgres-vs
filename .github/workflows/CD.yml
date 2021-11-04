@@ -26,7 +26,6 @@ jobs:
         mkdir _data
         initdb _data
         sudo -i -u postgres
-        postgres -D _data
-        psql
+        sudo postgres -D _data
     - name: Build & Run
       run: cargo run
