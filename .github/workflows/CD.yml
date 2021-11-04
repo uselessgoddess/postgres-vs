@@ -23,6 +23,7 @@ jobs:
         cd ~
         PATH=$PATH:/usr/lib/postgresql/12/bin
         export PATH
+        initdb
         sudo -i -u postgres
         pg_ctl start
         psql
