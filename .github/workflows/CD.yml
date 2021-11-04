@@ -21,7 +21,7 @@ jobs:
     - name: Start Postgres
       run: |
         cd ~
-        PATH=$PATH:/usr/lib/postgresql/{version}/bin
+        PATH=$PATH:/usr/lib/postgresql/12/bin
         export PATH
         sudo -i -u postgres
         pg_ctl start
