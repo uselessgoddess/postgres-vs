@@ -22,17 +22,6 @@ jobs:
     - name: Start Postgres
       run: |
         sudo -i -u postgres
-        sudo service postgresql start
-        psql postgres://postgres:@localhost/postgres << SQL
-
-        CREATE TABLE links (id bigserial PRIMARY KEY, from_id bigint DEFAULT 0, to_id bigint DEFAULT 0);
-
-        CREATE INDEX IF NOT EXISTS links__id_hash ON links USING hash (id);
-        CREATE INDEX IF NOT EXISTS links__from_id_hash ON links USING hash (from_id);
-        CREATE INDEX IF NOT EXISTS links__from_id_btree ON links USING btree (from_id);
-        CREATE INDEX IF NOT EXISTS links__to_id_hash ON links USING hash (to_id);
-        CREATE INDEX IF NOT EXISTS links__to_id_btree ON links USING btree (to_id);
-
-        SQL
+        psql
     - name: Build & Run
       run: cargo run
