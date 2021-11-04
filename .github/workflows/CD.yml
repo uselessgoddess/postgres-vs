@@ -28,6 +28,7 @@ jobs:
         initdb _data
         sudo -i -u postgres
          pg_ctl -D _data -l logfile start
+        cat logfile
         psql
     - name: Build & Run
       run: cargo run
