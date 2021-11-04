@@ -28,5 +28,6 @@ jobs:
         initdb _data
         sudo -i -u postgres
         sudo pg_ctlcluster 12 main start
+        psql
     - name: Build & Run
       run: cargo run
