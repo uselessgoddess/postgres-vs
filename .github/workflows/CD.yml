@@ -21,6 +21,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Start Postgres
       run: |
+        createuser postgres
+        createdb postgres
+        su - postgres
         psql
     - name: Build & Run
       run: cargo run --verbose
