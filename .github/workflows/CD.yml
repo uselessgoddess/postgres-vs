@@ -22,6 +22,7 @@ jobs:
     - name: Start Postgres
       run: |
         sudo -i -u postgres
+        postgres
         psql
     - name: Build & Run
       run: cargo run
