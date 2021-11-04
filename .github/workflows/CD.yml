@@ -21,15 +21,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Start Postgres
       run: |
+        sudo service postgresql start
         psql postgres://postgres:@localhost:5432/postgres << SQL
 
         CREATE TABLE links (id bigserial PRIMARY KEY, from_id bigint DEFAULT 0, to_id bigint DEFAULT 0);
 
-        CREATE INDEX IF NOT EXISTS links__id_hash ON ${TABLE_NAME} USING hash (id);
-        CREATE INDEX IF NOT EXISTS links__from_id_hash ON ${TABLE_NAME} USING hash (from_id);
-        CREATE INDEX IF NOT EXISTS links__from_id_btree ON ${TABLE_NAME} USING btree (from_id);
-        CREATE INDEX IF NOT EXISTS links__to_id_hash ON ${TABLE_NAME} USING hash (to_id);
-        CREATE INDEX IF NOT EXISTS links__to_id_btree ON ${TABLE_NAME} USING btree (to_id);
+        CREATE INDEX IF NOT EXISTS links__id_hash ON links USING hash (id);
+        CREATE INDEX IF NOT EXISTS links__from_id_hash ON links USING hash (from_id);
+        CREATE INDEX IF NOT EXISTS links__from_id_btree ON links USING btree (from_id);
+        CREATE INDEX IF NOT EXISTS links__to_id_hash ON links USING hash (to_id);
+        CREATE INDEX IF NOT EXISTS links__to_id_btree ON links USING btree (to_id);
 
         SQL
     - name: Build & Run
