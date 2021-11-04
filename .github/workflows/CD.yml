@@ -21,13 +21,16 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Ls 
-        run: ls
+      - name: Install latest nightly
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: nightly
+            override: true
+
       - name: Build & Run
-        uses: actions-rs/cargo@v1.0.1
+        uses: actions-rs/cargo@v1
         with:
           command: run
-          toolchain: nightly
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
