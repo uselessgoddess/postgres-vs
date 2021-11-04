@@ -21,9 +21,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-
-      - name: Connect to PostgreSQL
-        run: cargo run
+        
+      - name: Build & Run
+        uses: actions-rs/cargo@v1.0.1
+        with:
+          command: run
+          toolchain: nightly
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
+      
