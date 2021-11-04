@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Start Postgres
       run: |
-        pg_ctl reload
+        sudo -i -u postgres
         sudo service postgresql start
         psql postgres://postgres:@localhost/postgres << SQL
 
