@@ -1,30 +1,26 @@
 name: Rust
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-env:
-  CARGO_TERM_COLOR: always
+on: push
 
 jobs:
-  build:
-
+  container-job:
     runs-on: ubuntu-latest
-
+    container: node:10.18-jessie
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '11'
-    - uses: actions/checkout@v2
-    - name: Start Postgres
-      run: |
-        sudo service postgresql start
-        createuser postgres
-        createdb postgres
-        su - postgres
-        psql
-    - name: Build & Run
-      run: cargo run --verbose
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Connect to PostgreSQL
+        run: cargo run
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
