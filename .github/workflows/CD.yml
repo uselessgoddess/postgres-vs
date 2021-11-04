@@ -24,7 +24,7 @@ jobs:
         PATH=$PATH:/usr/lib/postgresql/{version}/bin
         export PATH
         sudo -i -u postgres
-        pg_ctlcluster start
+        pg_ctl start
         psql
     - name: Build & Run
       run: cargo run
