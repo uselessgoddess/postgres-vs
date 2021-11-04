@@ -24,4 +24,4 @@ jobs:
         sudo service postgresql start
         psql
     - name: Build & Run
-      run: cargo run --verbose
+      run: cargo run
