@@ -21,7 +21,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-        
+      - name: Ls 
+        run: ls
       - name: Build & Run
         uses: actions-rs/cargo@v1.0.1
         with:
