@@ -22,9 +22,6 @@ jobs:
     - name: Start Postgres
       run: |
         sudo service postgresql start
-        createuser postgres
-        createdb postgres
-        su - postgres
         psql
     - name: Build & Run
       run: cargo run --verbose
