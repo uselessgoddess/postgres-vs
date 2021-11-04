@@ -16,12 +16,12 @@ jobs:
 
     steps:
     - name: Install PostgreSQL
-      run: sudo apt install postgresql postgresql-contrib
+      run: sudo apt install postgresql postgresql-contrib postgresql-common
     - uses: actions/checkout@v2
     - name: Start Postgres
       run: |
         sudo -i -u postgres
-        pg_ctl start
+        pg_ctlcluster start
         psql
     - name: Build & Run
       run: cargo run
