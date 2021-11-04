@@ -21,10 +21,8 @@ jobs:
     - name: Start Postgres
       run: |
         cd ~
-        vim .profile
         PATH=$PATH:/usr/lib/postgresql/{version}/bin
         export PATH
-        . ~/.profile
         sudo -i -u postgres
         pg_ctlcluster start
         psql
