@@ -24,6 +24,7 @@ jobs:
         PATH=$PATH:/usr/lib/postgresql/12/bin
         export PATH
         mkdir _data
+        export PGDATA=_data
         initdb _data
         sudo -i -u postgres
         sudo pg_ctlcluster 12 main start
