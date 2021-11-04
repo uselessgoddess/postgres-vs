@@ -22,7 +22,7 @@ jobs:
     - name: Start Postgres
       run: |
         sudo service postgresql start
-        psql postgres://postgres:@localhost:5432/postgres << SQL
+        psql postgres://postgres:@localhost/postgres << SQL
 
         CREATE TABLE links (id bigserial PRIMARY KEY, from_id bigint DEFAULT 0, to_id bigint DEFAULT 0);
 
