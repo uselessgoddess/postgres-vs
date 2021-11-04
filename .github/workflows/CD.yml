@@ -26,6 +26,6 @@ jobs:
         mkdir _data
         initdb _data
         sudo -i -u postgres
-        sudo pg_ctl -D _data -l logfile start
+        sudo pg_ctlcluster 12 main start
     - name: Build & Run
       run: cargo run
