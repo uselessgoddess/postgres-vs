@@ -1,6 +1,9 @@
 name: Rust
 on: push
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   container-job:
     runs-on: ubuntu-latest
